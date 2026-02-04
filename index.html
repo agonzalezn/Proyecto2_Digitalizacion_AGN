@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXZ7EXQDS0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXZ7EXQDS0');
+    </script>
+    <meta name="google-site-verification" content="Rgpf1jT5SVOOH97kUW35P55ZfLAzq5f1rx5CBfAqjfU" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador Voley Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">VoleyPro</div>
+        <div class="status-indicator">🔴 En vivo</div>
+    </header>
+
+    <main class="app-container">
+        <div class="scoreboard-card">
+            
+            <div class="team-column">
+                <input type="text" value="LOCAL" class="team-name-input" />
+                <div class="score-big" id="puntosLocal">00</div>
+                <div class="sets-badge">Sets: <span id="setsLocal">0</span></div>
+                
+                <button class="btn-giant push-effect" onclick="sumarPunto('local')">+</button>
+                <div class="secondary-actions">
+                    <button class="btn-small" onclick="restarPunto('local')">-1</button>
+                    <button class="btn-small btn-set" onclick="sumarSet('local')">SET 🏆</button>
+                </div>
+            </div>
+
+            <div class="divider-vertical"></div>
+
+            <div class="team-column">
+                <input type="text" value="VISITA" class="team-name-input" />
+                <div class="score-big" id="puntosVisitante">00</div>
+                <div class="sets-badge">Sets: <span id="setsVisitante">0</span></div>
+                
+                <button class="btn-giant push-effect" onclick="sumarPunto('visitante')">+</button>
+                <div class="secondary-actions">
+                    <button class="btn-small" onclick="restarPunto('visitante')">-1</button>
+                    <button class="btn-small btn-set" onclick="sumarSet('visitante')">SET 🏆</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-reset-text" onclick="reiniciarPartido()">🔄 Reiniciar Partido</button>
+
+        <div class="ad-space-mobile">
+            <p>Publicidad</p>
+        </div>
+        
+        <article class="info-voley collapsed">
+            <h2>Instrucciones Rápidas</h2>
+            <p>Usa los botones grandes para sumar puntos. El marcador se guarda automáticamente.</p>
+        </article>
+    </main>
+    <footer style="text-align: center; padding: 20px; color: #666; font-size: 0.7rem; margin-bottom: 20px;">
+    <p>© 2025 VoleyPro - Todos los derechos reservados</p>
+    <a href="legal.html" style="color: #888; text-decoration: none;">Política de Privacidad y Cookies</a>
+    </footer>
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <span class="icon">🔢</span>
+            <span class="label">Marcador</span>
+        </a>
+        <a href="posiciones.html" class="nav-item">
+            <span class="icon">📍</span>
+            <span class="label">Posiciones</span>
+        </a>
+        <a href="entrenamientos.html" class="nav-item">
+            <span class="icon">💪</span>
+            <span class="label">Entreno</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

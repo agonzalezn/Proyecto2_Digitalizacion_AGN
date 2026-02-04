@@ -1,0 +1,166 @@
+:root {
+    --bg-app: #121212;
+    --card-bg: #1e1e24;
+    --primary: #ff4757; /* Rojo neón */
+    --text-main: #ffffff;
+    --text-muted: #a4b0be;
+    --nav-bg: #2f3542;
+    --success: #2ed573;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    padding-bottom: 80px; /* IMPORTANTE: Deja sitio para el menú de abajo */
+    user-select: none;
+}
+
+/* --- HEADER SUPERIOR (Común en todas) --- */
+.app-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-app);
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 1px; color: var(--text-main); text-decoration: none; }
+.status-indicator { font-size: 0.8rem; color: var(--primary); font-weight: bold; }
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.app-container {
+    padding: 10px;
+    max-width: 800px; /* Un poco más ancho para leer artículos */
+    margin: 0 auto;
+}
+
+/* --- ESTILOS DEL MARCADOR (Tu App) --- */
+.scoreboard-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.team-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.divider-vertical { width: 1px; background: #333; margin: 0 10px; }
+
+.team-name-input {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.score-big { font-size: 3.5rem; font-weight: 800; line-height: 1; color: #fff; }
+.sets-badge { background: #333; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; color: var(--success); }
+
+/* Botones */
+.btn-giant {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 100%;
+    height: 70px;
+    border-radius: 12px;
+    font-size: 2rem;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #c0392b;
+    transition: transform 0.1s;
+}
+.btn-giant:active { transform: translateY(4px); box-shadow: none; }
+
+.secondary-actions { display: flex; gap: 5px; width: 100%; }
+.btn-small { flex: 1; padding: 8px; border: 1px solid #444; background: transparent; color: var(--text-muted); border-radius: 8px; font-size: 0.8rem; }
+.btn-set { background: rgba(46, 213, 115, 0.1); color: var(--success); border: 1px solid var(--success); }
+.btn-reset-text { width: 100%; background: transparent; border: none; color: #555; padding: 20px; margin-top: 10px; }
+
+/* --- BARRA DE NAVEGACIÓN INFERIOR (Para todas las páginas) --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: var(--card-bg);
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.nav-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    gap: 4px;
+    padding: 5px;
+    width: 100%;
+}
+.nav-item .icon { font-size: 1.4rem; }
+.nav-item.active { color: var(--primary); }
+
+/* --- ESTILOS DE CONTENIDO (Artículos, Tablas y Vídeos) --- */
+.info-voley {
+    text-align: left;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.info-voley h1 { color: var(--primary); font-size: 1.5rem; margin-top: 0; }
+.info-voley h2 { color: #fff; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+
+/* Tablas */
+.tabla-voley { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+.tabla-voley th, .tabla-voley td { padding: 12px; border: 1px solid #444; text-align: left; }
+.tabla-voley th { background-color: #252540; color: var(--primary); }
+.tabla-voley tr:nth-child(even) { background-color: #1e1e2f; }
+
+/* Cajas destacadas */
+.nota-importante { background-color: rgba(233, 69, 96, 0.1); padding: 15px; border-left: 4px solid var(--primary); border-radius: 5px; margin: 20px 0; }
+.consejo-tecnico { background-color: #2a2a40; border-left: 4px solid var(--success); padding: 15px; margin-bottom: 30px; font-size: 0.95rem; }
+.perfil-jugador { margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+.perfil-jugador h3 { color: var(--success); margin-bottom: 5px; }
+
+/* Vídeos Responsive */
+.video-responsive {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
