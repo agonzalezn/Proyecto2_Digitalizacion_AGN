@@ -12,5 +12,5 @@ Este proyecto es una herramienta operativa diseñada para la digitalización de 
 2. Abre el archivo `index.html` en cualquier navegador moderno.
 3. ¡Empieza a anotar puntos!
 
-## ⚖️ Licencia
+## Licencia
 Este proyecto se publica bajo la licencia **MIT** (Open Source).
