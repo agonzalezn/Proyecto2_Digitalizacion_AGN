@@ -19,7 +19,8 @@ A diferencia de otras aplicaciones, no necesitas descargar ningún archivo `.exe
 3. Selecciona **Download ZIP**.
 4. Extrae (descomprime) la carpeta en tu Escritorio o donde prefieras.
 
-<img width="2400" height="1760" alt="Gemini_Generated_Image_alt5e2alt5e2alt5" src="https://github.com/user-attachments/assets/9897a98c-3a5b-4801-b64d-ac4b4a0bc26c" />
+![WhatsApp Image 2026-03-03 at 12 55 05](https://github.com/user-attachments/assets/a0b0e212-8016-435d-b701-45e47e20420c)
+
 
 ### 🔹 Paso 2 – Ejecutar la App
 
