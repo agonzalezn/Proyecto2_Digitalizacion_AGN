@@ -84,3 +84,8 @@ Si eres desarrollador o profesor, así está estructurado el código:
 * `entrenamientos.html` → Biblioteca multimedia.
 * `style.css` → Diseño moderno tipo *Glassmorphism*.
 * `script.js` → Lógica matemática del marcador y guardado en `LocalStorage`.
+
+---
+
+## Licencia
+Este proyecto se publica bajo la licencia **MIT** (Open Source).
