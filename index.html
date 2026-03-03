@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXZ7EXQDS0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZXZ7EXQDS0');
+    </script>
+    <meta name="google-site-verification" content="Rgpf1jT5SVOOH97kUW35P55ZfLAzq5f1rx5CBfAqjfU" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador Voley Pro - Panel de Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <a href="index.html" class="logo">VoleyPro</a>
+        <div class="status-indicator">🔴 EN VIVO</div>
+    </header>
+
+    <main class="app-container">
+        
+        <div class="scoreboard-card">
+            <div class="team-column">
+                <input type="text" value="LOCAL" class="team-name-input" />
+                <div class="score-big" id="puntosLocal">00</div>
+                <div class="sets-badge">Sets: <span id="setsLocal">0</span></div>
+
+                <button class="btn-giant push-effect" onclick="sumarPunto('local')">+</button>
+                <div class="secondary-actions">
+                    <button class="btn-small" onclick="restarPunto('local')">-1</button>
+                    <button class="btn-small btn-set" onclick="sumarSet('local')">SET 🏆</button>
+                </div>
+            </div>
+
+            <div class="divider-vertical"></div>
+
+            <div class="team-column">
+                <input type="text" value="VISITA" class="team-name-input" />
+                <div class="score-big" id="puntosVisitante">00</div>
+                <div class="sets-badge">Sets: <span id="setsVisitante">0</span></div>
+
+                <button class="btn-giant push-effect" onclick="sumarPunto('visitante')">+</button>
+                <div class="secondary-actions">
+                    <button class="btn-small" onclick="restarPunto('visitante')">-1</button>
+                    <button class="btn-small btn-set" onclick="sumarSet('visitante')">SET 🏆</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-reset-text" onclick="reiniciarPartido()">🔄 Finalizar Partido y Guardar Acta</button>
+
+        <article class="info-voley" style="padding: 15px;">
+            <h2 style="margin-top:0; font-size: 1.2rem;">⚙️ Configuración del Encuentro</h2>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                <label style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">
+                    <input type="checkbox" checked> Al mejor de 5 sets
+                </label>
+                <label style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">
+                    <input type="checkbox" checked> Tie-break a 15
+                </label>
+                <label style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">
+                    <input type="checkbox"> Libero en pista
+                </label>
+            </div>
+        </article>
+
+        <article class="info-voley">
+            <h2>📚 Guía Rápida de Arbitraje</h2>
+            <details style="margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                <summary style="font-weight: bold; color: var(--local-color); cursor: pointer;">Faltas de Toque</summary>
+                <p style="font-size: 0.9rem; margin-top: 5px;">
+                    <strong>Dobles:</strong> Un jugador golpea el balón dos veces consecutivas (o el balón toca varias partes de su cuerpo sucesivamente).<br>
+                    <strong>Retención:</strong> El balón es atrapado o lanzado; no rebota en el toque.
+                </p>
+            </details>
+            <details style="margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                <summary style="font-weight: bold; color: var(--local-color); cursor: pointer;">Faltas en la Red</summary>
+                <p style="font-size: 0.9rem; margin-top: 5px;">
+                    <strong>Contacto:</strong> Tocar la banda superior de la red mientras se juega el balón.<br>
+                    <strong>Invasión:</strong> Cruzar completamente la línea central con el pie.
+                </p>
+            </details>
+            <details>
+                <summary style="font-weight: bold; color: var(--local-color); cursor: pointer;">Tiempos y Pausas</summary>
+                <p style="font-size: 0.9rem; margin-top: 5px;">
+                    Cada equipo tiene derecho a <strong>2 tiempos muertos</strong> de 30 segundos por set.
+                </p>
+            </details>
+        </article>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <span class="icon">🔢</span>
+        </a>
+        <a href="historial.html" class="nav-item">
+            <span class="icon">📜</span>
+        </a>
+        <a href="posiciones.html" class="nav-item">
+            <span class="icon">📍</span>
+        </a>
+        <a href="entrenamientos.html" class="nav-item">
+            <span class="icon">💪</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script> 
+</body>
+</html>

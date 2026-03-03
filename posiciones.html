@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXZ7EXQDS0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZXZ7EXQDS0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posiciones y Táctica - VoleyPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ESTILOS DE LA PISTA VISUAL */
+        .court-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 3 columnas */
+            grid-template-rows: 1fr 1fr;       /* 2 filas */
+            gap: 2px;
+            background: #fff; /* Líneas blancas */
+            border: 2px solid #fff;
+            margin: 20px auto;
+            max-width: 400px;
+            aspect-ratio: 1/1; /* Cuadrado (medio campo) */
+            padding: 2px;
+        }
+        
+        .zone-box {
+            background: rgba(255, 111, 0, 0.2); /* Suelo naranja */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+        }
+        
+        /* Línea de 3 metros */
+        .zone-box:nth-child(-n+3) { border-bottom: 2px dashed rgba(255,255,255,0.5); }
+        
+        .zone-number {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.2);
+            position: absolute;
+        }
+        
+        .zone-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            z-index: 2;
+            text-shadow: 0 1px 2px #000;
+        }
+
+        /* ESTILOS DE CARTAS DE JUGADOR (FIFA STYLE) */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: ''; position: absolute; top:0; left:0; width:100%; height: 5px;
+        }
+        /* Colores por rol */
+        .card-libero::before { background: #ff4757; }
+        .card-setter::before { background: #feca57; }
+        .card-middle::before { background: #2ed573; }
+        .card-spiker::before { background: #00d2ff; }
+
+        .role-title { font-family: 'Teko'; font-size: 1.8rem; margin: 0; color: #fff; }
+        .role-desc { font-size: 0.8rem; color: #ccc; margin-bottom: 15px; min-height: 40px;}
+
+        /* Barras de estadísticas */
+        .stat-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; font-size: 0.75rem; }
+        .stat-bar-bg { width: 60%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; }
+        .stat-bar-fill { height: 100%; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="index.html" class="logo">VoleyPro</a>
+    </header>
+
+    <main class="app-container">
+        <article class="info-voley">
+            <h1>Mapa Táctico</h1>
+            <p>Visualización interactiva de zonas y roles.</p>
+
+            <h2 style="text-align: center; color: var(--local-color);">📍 Las 6 Zonas (Rotación)</h2>
+            <div style="text-align: center; font-size: 0.8rem; color: #aaa; margin-bottom: 10px;">⬆️ RED (Campo Contrario) ⬆️</div>
+            
+            <div class="court-visual">
+                <div class="zone-box">
+                    <span class="zone-number">4</span>
+                    <span class="zone-label">Ataque Izq.</span>
+                </div>
+                <div class="zone-box">
+                    <span class="zone-number">3</span>
+                    <span class="zone-label">Central</span>
+                </div>
+                <div class="zone-box">
+                    <span class="zone-number">2</span>
+                    <span class="zone-label">Colocador / Opuesto</span>
+                </div>
+                
+                <div class="zone-box">
+                    <span class="zone-number">5</span>
+                    <span class="zone-label">Defensa Diagonal</span>
+                </div>
+                <div class="zone-box">
+                    <span class="zone-number">6</span>
+                    <span class="zone-label">Defensa Fondo</span>
+                </div>
+                <div class="zone-box" style="background: rgba(46, 213, 115, 0.2);"> <span class="zone-number">1</span>
+                    <span class="zone-label">SAQUE / Defensa</span>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 0.8rem; margin-top: 10px;">
+                💡 La rotación es en sentido de las agujas del reloj (1 ➡ 6 ➡ 5 ➡ 4 ➡ 3 ➡ 2 ➡ 1)
+            </div>
+
+            <h2 style="text-align: center; margin-top: 40px; color: var(--local-color);">🏆 Roles de Juego</h2>
+            <div class="roles-grid">
+                
+                <div class="player-card card-libero">
+                    <h3 class="role-title">LÍBERO 🛡️</h3>
+                    <p class="role-desc">El especialista defensivo. Camiseta distinta. Solo juega atrás. No saca ni remata.</p>
+                    <div class="stat-row">
+                        <span>DEFENSA</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 99%; background: #ff4757;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>VELOCIDAD</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 90%; background: #ff4757;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>ATAQUE</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 10%; background: #555;"></div></div>
+                    </div>
+                </div>
+
+                <div class="player-card card-setter">
+                    <h3 class="role-title">COLOCADOR 👐</h3>
+                    <p class="role-desc">El cerebro. Toca el 2º balón para asistir a los atacantes. Líder táctico.</p>
+                    <div class="stat-row">
+                        <span>TÉCNICA</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%; background: #feca57;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>INTELIGENCIA</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%; background: #feca57;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>BLOQUEO</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 40%; background: #feca57;"></div></div>
+                    </div>
+                </div>
+
+                <div class="player-card card-middle">
+                    <h3 class="role-title">CENTRAL 🏰</h3>
+                    <p class="role-desc">El más alto. Su trabajo es bloquear en la red y atacar bolas rápidas.</p>
+                    <div class="stat-row">
+                        <span>BLOQUEO</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%; background: #2ed573;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>ATAQUE</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 70%; background: #2ed573;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>RECEPCIÓN</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 20%; background: #555;"></div></div>
+                    </div>
+                </div>
+
+                <div class="player-card card-spiker">
+                    <h3 class="role-title">PUNTA / OPUESTO 🔨</h3>
+                    <p class="role-desc">Los encargados de sumar puntos. El Opuesto no recibe, el Punta sí.</p>
+                    <div class="stat-row">
+                        <span>POTENCIA</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%; background: #00d2ff;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>SALTO</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 90%; background: #00d2ff;"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <span>SAQUE</span>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 85%; background: #00d2ff;"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="icon">🔢</span>
+        </a>
+        <a href="historial.html" class="nav-item">
+            <span class="icon">📜</span>
+        </a>
+        <a href="posiciones.html" class="nav-item active">
+            <span class="icon">📍</span>
+        </a>
+        <a href="entrenamientos.html" class="nav-item">
+            <span class="icon">💪</span>
+        </a>
+    </nav>
+</body>
+</html>

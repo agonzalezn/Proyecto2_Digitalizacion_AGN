@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial y Estadísticas - VoleyPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <a href="index.html" class="logo">VoleyPro</a>
+    </header>
+
+    <main class="app-container">
+        
+        <article class="info-voley" style="padding: 20px; text-align: center; margin-bottom: 20px;">
+            <h2 style="margin-top: 0; margin-bottom: 15px;">📊 Estadísticas de Temporada</h2>
+            <div style="display: flex; justify-content: space-around;">
+                <div>
+                    <div style="font-size: 2rem; font-family: 'Teko'; color: var(--local-color);">12</div>
+                    <div style="font-size: 0.7rem; color: #aaa;">JUGADOS</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-family: 'Teko'; color: var(--success);">8</div>
+                    <div style="font-size: 0.7rem; color: #aaa;">VICTORIAS</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-family: 'Teko'; color: var(--visit-color);">66%</div>
+                    <div style="font-size: 0.7rem; color: #aaa;">WIN RATE</div>
+                </div>
+            </div>
+        </article>
+
+        <article class="info-voley">
+            <h1>Registro de Partidos</h1>
+            <p style="text-align: center; font-size: 0.9rem; margin-bottom: 20px;">
+                Historial completo almacenado en LocalStorage.
+            </p>
+
+            <table class="tabla-voley">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Encuentro</th>
+                        <th>Sets</th>
+                    </tr>
+                </thead>
+                <tbody id="listaPartidos">
+                    </tbody>
+            </table>
+            
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button onclick="alert('Funcionalidad de exportar a CSV próximamente')" class="btn-small" style="width: 100%; border-color: var(--local-color); color: var(--local-color);">
+                    📂 Exportar Datos
+                </button>
+                <button onclick="borrarHistorial()" class="btn-small" style="width: 100%; border-color: #ff4757; color: #ff4757;">
+                    🗑️ Borrar Todo
+                </button>
+            </div>
+        </article>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="icon">🔢</span>
+        </a>
+        <a href="historial.html" class="nav-item active">
+            <span class="icon">📜</span>
+        </a>
+        <a href="posiciones.html" class="nav-item">
+            <span class="icon">📍</span>
+        </a>
+        <a href="entrenamientos.html" class="nav-item">
+            <span class="icon">💪</span>
+        </a>
+    </nav>
+
+    <script>
+        const lista = document.getElementById('listaPartidos');
+        const historial = JSON.parse(localStorage.getItem('voley_historial')) || [];
+
+        if(historial.length === 0) {
+            lista.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#888; padding: 20px;">No hay partidos registrados aún.<br>¡Ve al marcador y juega uno!</td></tr>';
+        } else {
+            historial.forEach(p => {
+                lista.innerHTML += `
+                    <tr>
+                        <td style="font-size: 0.8rem; color: #aaa;">${p.fecha}</td>
+                        <td>
+                            <strong style="color:#fff">${p.local}</strong>
+                            <br><span style="font-size:0.75rem; color:#666">vs</span><br>
+                            <span style="color:#aaa">${p.visitante}</span>
+                        </td>
+                        <td style="font-size: 1.5rem; font-family:'Teko'; color: var(--success); text-align: center;">
+                            ${p.setsL} - ${p.setsV}
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function borrarHistorial() {
+            if(confirm('¿Seguro que quieres borrar el historial permanentemente?')) {
+                localStorage.removeItem('voley_historial');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
